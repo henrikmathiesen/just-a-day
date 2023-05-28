@@ -14,12 +14,12 @@ const handleAdminClick = () => setShowAdmin(!showAdmin);
 
   return (
       <nav className="row flex-shrink-0 bg-light py-5">
-        <div className="col">
+        <div className="col-lg-auto">
            <button type="button" className="btn btn-outline-success mr-2" ref={blogButtonRef}>Blog</button>
            <button type="button" className="btn btn-outline-primary mr-2">Add Post</button>
            <button type="button" className="btn btn-outline-secondary" onClick={handleAdminClick}>Toggle Admin</button>
         </div>
-        <div className="col text-right">
+        <div className="col-lg text-lg-right">
         	{
         		showAdmin &&
         		<>
