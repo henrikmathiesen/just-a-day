@@ -1,0 +1,13 @@
+@media only screen and (max-width:768px) {
+
+	.app-admin-buttons-container button {
+		display: block;
+		width: 100%;
+		margin-bottom: 0.5rem;
+	}
+	
+	.app-admin-buttons-container button:last-child {
+		margin-bottom: 0;
+	}
+
+}
