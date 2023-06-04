@@ -1,5 +1,7 @@
 const postsService = {};
 
+const _key = 'justADay';
+
 postsService.get = function() {
 
 	const mockPosts = [
@@ -25,8 +27,19 @@ postsService.get = function() {
 	
 	];
 	
-	return mockPosts;
+	let realPosts = localStorage.getItem(_key);
+	
+	if(realPosts) {
+		realPosts = JSON.parse(realPosts);
+	}
+	
+	return realPosts || mockPosts;
 
+}
+
+postsService.set = function(posts) {
+	const j = JSON.stringify(posts);
+	localStorage.setItem(_key, j);
 }
 
 export default postsService;
