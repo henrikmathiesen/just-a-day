@@ -1,14 +1,11 @@
-import Blogpost from '../Blogpost/Blogpost.js';
-import postsService from '../services/posts.service.js';
+import Blogposts from '../Blogposts/Blogposts.js';
 
 function Main() {
-
-const posts = postsService.get();
 
   return (
       <main className="row flex-grow-1 bg-light">
         <div className="col">
-           { posts.map((post) => ( <Blogpost post={post} key={post.id} /> )) }
+           <Blogposts />
         </div>
       </main>
   );
