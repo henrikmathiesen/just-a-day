@@ -6,10 +6,10 @@ import './Blogposts.css';
 function Blogposts() {
 
 	const posts = postsService.get();
-	
+
 	return (
 		<>
-		{ posts.map((post) => ( <Blogpost post={post} key={post.id} /> )) }
+			{posts.map((post) => (<Blogpost post={post} key={post.id} />))}
 		</>
 	);
 

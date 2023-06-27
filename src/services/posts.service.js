@@ -2,10 +2,10 @@ const postsService = {};
 
 const _key = 'justADay';
 
-postsService.get = function() {
+postsService.get = function () {
 
 	const mockPosts = [
-	
+
 		{
 			id: 1,
 			header: 'Post One Header',
@@ -24,20 +24,20 @@ postsService.get = function() {
 			paragraph: 'Post Three Paragraph',
 			pDate: '2023-06-03'
 		}
-	
+
 	];
-	
+
 	let realPosts = localStorage.getItem(_key);
-	
-	if(realPosts) {
+
+	if (realPosts) {
 		realPosts = JSON.parse(realPosts);
 	}
-	
+
 	return realPosts || mockPosts;
 
 }
 
-postsService.set = function(posts) {
+postsService.set = function (posts) {
 	const j = JSON.stringify(posts);
 	localStorage.setItem(_key, j);
 }

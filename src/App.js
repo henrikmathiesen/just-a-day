@@ -7,8 +7,8 @@ import Footer from './Footer/Footer.js';
 
 function App() {
 
-const [view, setView] = useState('Blog');
-const handleChangeViewClick = (v) => setView(v);
+  const [view, setView] = useState('Blog');
+  const handleChangeViewClick = (v) => setView(v);
 
   return (
     <div className="container d-flex flex-column">
