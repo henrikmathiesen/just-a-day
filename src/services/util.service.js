@@ -12,4 +12,14 @@ utilService.getNewId = function (posts) {
     return sorted.pop() + 1;
 }
 
+utilService.setDate = function() {
+    return new Date();
+}
+
+utilService.displayDate = function(d) {
+    // dateObj or JSON
+
+    return d.toLocaleDateString('sv-se');
+}
+
 export default utilService;

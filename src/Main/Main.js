@@ -1,11 +1,12 @@
 import Blogposts from '../Blogposts/Blogposts.js';
+import AddBlogPosts from '../AddBlogPost/AddBlogPost.js';
 
 function Main({ view }) {
 
     const viewToShow = () => {
         switch (view) {
             case 'Add':
-                return 'Add Mock';
+                return (<AddBlogPosts />);
             case 'Edit':
                 return 'Edit Mock';
             case 'Delete':

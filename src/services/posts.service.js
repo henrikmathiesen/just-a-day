@@ -12,19 +12,19 @@ postsService.get = function () {
 			id: 1,
 			header: 'Post One Header',
 			paragraph: 'Post One Paragraph',
-			pDate: '2023-06-01'
+			pDate: new Date()
 		},
 		{
 			id: 2,
 			header: 'Post Two Header',
 			paragraph: 'Post Two Paragraph',
-			pDate: '2023-06-02'
+			pDate: new Date()
 		},
 		{
 			id: 3,
 			header: 'Post Three Header',
 			paragraph: 'Post Three Paragraph',
-			pDate: '2023-06-03'
+			pDate: new Date()
 		}
 
 	];
@@ -43,6 +43,7 @@ postsService.addPost = function(post) {
 	const currentPosts = postsService.get();
 	
 	post.id = utilService.getNewId(currentPosts);
+	post.pDate = utilService.setDate();
 
 	const newPosts = [...currentPosts, post];
 
