@@ -6,11 +6,11 @@ function BlogpostCategory({ category }) {
 
     switch (category) {
         case blogpostCategories.FINANCE:
+        case blogpostCategories.PROGRAMMING:
+        case blogpostCategories.OTHER:
             className += 'badge-info';
             break;
         case blogpostCategories.MENTAL_HEALTH:
-            className += 'badge-dark';
-            break;
         case blogpostCategories.PHYSICAL_HEALTH:
             className += 'badge-dark';
             break;

@@ -29,6 +29,20 @@ postsService.get = function () {
 			header: 'Post Three Header',
 			paragraph: 'Post Three Paragraph',
 			pDate: new Date()
+		},
+		{
+			id: 4,
+			category: blogpostCategories.PROGRAMMING,
+			header: 'Post Four Header',
+			paragraph: 'Post Four Paragraph',
+			pDate: new Date()
+		},
+		{
+			id: 5,
+			category: blogpostCategories.OTHER,
+			header: 'Post Five Header',
+			paragraph: 'Post Five Paragraph',
+			pDate: new Date()
 		}
 
 	];
