@@ -1,9 +1,9 @@
-import BlogpostCategory from '../BlogpostCategory/BlogpostCategory';
+import BlogpostCategories from '../BlogpostCategories/BlogpostCategories';
 import utilService from '../services/util.service';
 
 function Blogpost({ post }) {
 
-  const { category, header, paragraph, pDate } = post;
+  const { categories, header, paragraph, pDate } = post;
 
   return (
     <article className="app-blog-post">
@@ -11,7 +11,7 @@ function Blogpost({ post }) {
       <p>{paragraph}</p>
       <div className="row">
         <div className="col text-left">{utilService.displayDate(pDate)}</div>
-        <div className="col text-right"><BlogpostCategory category={category} /></div>
+        <div className="col text-right"><BlogpostCategories categories={categories} /></div>
       </div>
       <hr />
     </article>

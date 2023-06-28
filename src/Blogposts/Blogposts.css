@@ -5,4 +5,21 @@
 .app-badge {
 	position: relative;
 	top: -1px;
+	margin-right: 0.25rem;
+}
+
+.app-badge:last-child {
+	margin-right: 0;
+}
+
+@media only screen and (max-width:575px) { 
+	.app-badge {
+		margin-right: 0 !important;
+		margin-bottom: 0.25rem;
+		display: block;
+	}
+
+	.app-badge:last-child {
+		margin-bottom: 0;
+	}
 }

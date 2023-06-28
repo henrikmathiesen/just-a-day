@@ -11,35 +11,35 @@ postsService.get = function () {
 
 		{
 			id: 1,
-			category: blogpostCategories.FINANCE,
+			categories: [blogpostCategories.FINANCE, blogpostCategories.OTHER],
 			header: 'Post One Header',
 			paragraph: 'Post One Paragraph',
 			pDate: new Date()
 		},
 		{
 			id: 2,
-			category: blogpostCategories.PHYSICAL_HEALTH,
+			categories: [blogpostCategories.PHYSICAL_HEALTH],
 			header: 'Post Two Header',
 			paragraph: 'Post Two Paragraph',
 			pDate: new Date()
 		},
 		{
 			id: 3,
-			category: blogpostCategories.MENTAL_HEALTH,
+			categories: [blogpostCategories.MENTAL_HEALTH, blogpostCategories.OTHER],
 			header: 'Post Three Header',
 			paragraph: 'Post Three Paragraph',
 			pDate: new Date()
 		},
 		{
 			id: 4,
-			category: blogpostCategories.PROGRAMMING,
+			categories: [blogpostCategories.PROGRAMMING, blogpostCategories.OTHER],
 			header: 'Post Four Header',
 			paragraph: 'Post Four Paragraph',
 			pDate: new Date()
 		},
 		{
 			id: 5,
-			category: blogpostCategories.OTHER,
+			categories: [blogpostCategories.OTHER],
 			header: 'Post Five Header',
 			paragraph: 'Post Five Paragraph',
 			pDate: new Date()
