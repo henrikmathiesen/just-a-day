@@ -1,8 +1,8 @@
 const blogpostCategories = {
-    FINANCE: 'Finance',
-    PHYSICAL_HEALTH: 'Physical Health',
     MENTAL_HEALTH: 'Mental Health',
+    PHYSICAL_HEALTH: 'Physical Health',
     PROGRAMMING: 'Programming',
+    FINANCE: 'Finance',
     OTHER: 'Other'
 };
 
