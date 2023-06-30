@@ -6,4 +6,13 @@ const blogpostCategories = {
     OTHER: 'Other'
 };
 
-export { blogpostCategories };
+const views = {
+    BLOG: 'Blog',
+    ADD: 'Add Post',
+    EDIT: 'Edit Post',
+    DELETE: 'Delete Post',
+    IMPORT: 'Import Database',
+    EXPORT: 'Export Database'
+};
+
+export { blogpostCategories, views };

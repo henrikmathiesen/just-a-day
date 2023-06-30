@@ -1,19 +1,20 @@
 import Blogposts from '../Blogposts/Blogposts.js';
 import AddBlogPosts from '../AddBlogPost/AddBlogPost.js';
+import { views } from '../constants/constants';
 
 function Main({ view }) {
 
     const viewToShow = () => {
         switch (view) {
-            case 'Add':
+            case views.ADD:
                 return (<AddBlogPosts />);
-            case 'Edit':
+            case views.EDIT:
                 return 'Edit Mock';
-            case 'Delete':
+            case views.DELETE:
                 return 'Delete Mock';
-            case 'Import':
+            case views.IMPORT:
                 return 'Import Mock';
-            case 'Export':
+            case views.EXPORT:
                 return 'Export Mock';
             default:
                 return (<Blogposts />);
