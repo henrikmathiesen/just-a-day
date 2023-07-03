@@ -17,8 +17,7 @@ utilService.setDate = function() {
 }
 
 utilService.displayDate = function(d) {
-    // dateObj or JSON
-
+    d = new Date(d);
     return d.toLocaleDateString('sv-se');
 }
 
