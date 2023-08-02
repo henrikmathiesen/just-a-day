@@ -1,8 +1,8 @@
 const blogpostCategories = {
-    MENTAL_HEALTH: 'Mental Health',
-    PHYSICAL_HEALTH: 'Physical Health',
-    PROGRAMMING: 'Programming',
-    FINANCE: 'Finance',
+    MENTAL_FITNESS: 'Mental Fitness',
+    PHYSICAL_FITNESS: 'Physical Fitness',
+    WORK: 'Work',
+    HUMAN_RELATIONS: 'Human Relations',
     OTHER: 'Other'
 };
 
