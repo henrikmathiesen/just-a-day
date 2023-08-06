@@ -53,9 +53,9 @@ function AddBlogPosts() {
     return (
         <>
             <h2>Add Post</h2>
-            <div className="row">
+            <div className="row mt-4">
                 <div className="col-md-8">
-                    <div className="form-group mt-4">
+                    <div className="form-group">
                         <label htmlFor="header">Header</label>
                         <input type="text" id="header" className="form-control" onChange={(e) => setHeader(e.target.value)}></input>
                     </div>

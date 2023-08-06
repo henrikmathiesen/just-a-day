@@ -1,7 +1,7 @@
 const blogpostCategories = {
     MENTAL_FITNESS: 'Mental Fitness',
     PHYSICAL_FITNESS: 'Physical Fitness',
-    WORK: 'Work',
+    WORK: 'Work / Study',
     HUMAN_RELATIONS: 'Human Relations',
     OTHER: 'Other'
 };

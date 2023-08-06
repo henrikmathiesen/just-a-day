@@ -1,11 +1,14 @@
 import Blogposts from '../Blogposts/Blogposts.js';
 import AddBlogPosts from '../AddBlogPost/AddBlogPost.js';
+import ExportDatabase from '../ExportDatabase/ExportDatabase.js';
 import { views } from '../constants/constants';
 
 function Main({ view }) {
 
     const viewToShow = () => {
         switch (view) {
+            case views.BLOG:
+                return (<Blogposts />); 
             case views.ADD:
                 return (<AddBlogPosts />);
             case views.EDIT:
@@ -15,9 +18,9 @@ function Main({ view }) {
             case views.IMPORT:
                 return 'Import Mock';
             case views.EXPORT:
-                return 'Export Mock';
+                return (<ExportDatabase />);
             default:
-                return (<Blogposts />);
+                return 'error';
         }
     };
 
