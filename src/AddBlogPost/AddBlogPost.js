@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import './AddBlogPost.css';
 import { blogpostCategories } from '../constants/constants';
 import postsService from '../services/posts.service';
 
@@ -61,7 +60,7 @@ function AddBlogPosts() {
                     </div>
                     <div className="form-group">
                         <label htmlFor="post">Post</label>
-                        <textarea id="post" className="form-control app-add-blogpost-textarea" onChange={(e) => setPost(e.target.value)}></textarea>
+                        <textarea id="post" className="form-control app-textarea" onChange={(e) => setPost(e.target.value)}></textarea>
                     </div>
                 </div>
             </div>
@@ -82,7 +81,7 @@ function AddBlogPosts() {
                     }
                 </div>
                 <div className="col-md-4 mt-2 mt-md-1">
-                    <div className="form-group text-right">
+                    <div className="form-group">
                         <button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>Add it!</button>
                     </div>
                 </div>

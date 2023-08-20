@@ -2,8 +2,15 @@ import postsService from '../services/posts.service.js';
 
 function ExportDatabase() {
 
+    let exported;
+
     const posts = postsService.get();
-    const postsAsJsonString = JSON.stringify(posts);
+
+    if (posts.length < 1) {
+        exported = 'No data';
+    } else {
+        exported = JSON.stringify(posts);
+    }
 
     return (
         <>
@@ -11,7 +18,7 @@ function ExportDatabase() {
             <div className="row mt-4">
                 <div className="col">
                     <code>
-                        {postsAsJsonString}
+                        {exported}
                     </code>
                 </div>
             </div>

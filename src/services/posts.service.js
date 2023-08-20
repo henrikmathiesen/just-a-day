@@ -27,4 +27,8 @@ postsService.addPost = function(post) {
 	localStorage.setItem(_key, j);
 }
 
+postsService.import = function(dbAsJsonString) {
+	localStorage.setItem(_key, dbAsJsonString);
+}
+
 export default postsService;

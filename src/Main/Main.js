@@ -1,6 +1,7 @@
 import Blogposts from '../Blogposts/Blogposts.js';
 import AddBlogPosts from '../AddBlogPost/AddBlogPost.js';
 import ExportDatabase from '../ExportDatabase/ExportDatabase.js';
+import ImportDatabase from '../ImportDatabase/ImportDatabase.js';
 import { views } from '../constants/constants';
 
 function Main({ view }) {
@@ -16,7 +17,7 @@ function Main({ view }) {
             case views.DELETE:
                 return 'Delete Mock';
             case views.IMPORT:
-                return 'Import Mock';
+                return (<ImportDatabase />);
             case views.EXPORT:
                 return (<ExportDatabase />);
             default:
