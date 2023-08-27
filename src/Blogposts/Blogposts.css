@@ -1,3 +1,7 @@
+.app-blog-post:last-child {
+	padding-bottom: 1rem;
+}
+
 .app-blog-post:last-child hr {
 	display:none;
 }

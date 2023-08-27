@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { blogpostCategories } from '../constants/constants';
+import { blogpostCategories, views } from '../constants/constants';
 import postsService from '../services/posts.service';
 
-function AddBlogPosts() {
+function AddBlogPosts({ handleChangeViewClick }) {
 
     const [header, setHeader] = useState('');
     const [post, setPost] = useState('');
@@ -47,6 +47,7 @@ function AddBlogPosts() {
     const handleSubmit = () => { 
         // TODO: validation
         postsService.addPost({ categories: cats, header, paragraph: post });
+        handleChangeViewClick(views.BLOG);
     };
 
     return (

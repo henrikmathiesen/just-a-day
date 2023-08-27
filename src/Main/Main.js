@@ -4,14 +4,14 @@ import ExportDatabase from '../ExportDatabase/ExportDatabase.js';
 import ImportDatabase from '../ImportDatabase/ImportDatabase.js';
 import { views } from '../constants/constants';
 
-function Main({ view }) {
+function Main({ view, handleChangeViewClick }) {
 
     const viewToShow = () => {
         switch (view) {
             case views.BLOG:
                 return (<Blogposts />); 
             case views.ADD:
-                return (<AddBlogPosts />);
+                return (<AddBlogPosts handleChangeViewClick={handleChangeViewClick} />);
             case views.EDIT:
                 return 'Edit Mock';
             case views.DELETE:

@@ -14,7 +14,7 @@ function App() {
     <div className="container d-flex flex-column">
       <Header />
       <Nav handleChangeViewClick={handleChangeViewClick} />
-      <Main view={view} />
+      <Main view={view} handleChangeViewClick={handleChangeViewClick} />
       <Footer />
     </div>
   );
