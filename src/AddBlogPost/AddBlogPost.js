@@ -3,11 +3,14 @@ import { useState } from 'react';
 import { blogpostCategories, views } from '../constants/constants';
 import postsService from '../services/posts.service';
 
+import './AddBlogPost.css';
+
 function AddBlogPosts({ handleChangeViewClick }) {
 
     const [header, setHeader] = useState('');
     const [post, setPost] = useState('');
     const [cats, setCats,] = useState([]);
+    const [rating, setRating] = useState(3);
 
     const getCats = () => {
         const cats = [];
@@ -46,7 +49,7 @@ function AddBlogPosts({ handleChangeViewClick }) {
 
     const handleSubmit = () => { 
         // TODO: validation
-        postsService.addPost({ categories: cats, header, paragraph: post });
+        postsService.addPost({ categories: cats, header, paragraph: post, rating: parseInt(rating, 10) });
         handleChangeViewClick(views.BLOG);
     };
 
@@ -81,7 +84,16 @@ function AddBlogPosts({ handleChangeViewClick }) {
                         ))
                     }
                 </div>
-                <div className="col-md-4 mt-2 mt-md-1">
+                <div className="col-md-1 mt-3 mt-md-1">
+                    <select className="form-control app-add-blog-post-rating" defaultValue="3" onChange={(e) => setRating(e.target.value)}>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div className="col-md-3 mt-3 mt-md-1">
                     <div className="form-group">
                         <button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>Add it!</button>
                     </div>
