@@ -1,14 +1,16 @@
 import { useState } from 'react';
 
+import { views } from '../constants/constants';
 import postsService from '../services/posts.service';
 
-function ImportDatabase() {
+function ImportDatabase({ handleChangeViewClick }) {
 
     const [data, setData] = useState('');
 
     const handleSubmit = () => { 
         // TODO: validation
         postsService.import(data);
+        handleChangeViewClick(views.BLOG);
     };
 
     return (

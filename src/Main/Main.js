@@ -17,7 +17,7 @@ function Main({ view, handleChangeViewClick }) {
             case views.DELETE:
                 return 'Delete Mock';
             case views.IMPORT:
-                return (<ImportDatabase />);
+                return (<ImportDatabase handleChangeViewClick={handleChangeViewClick} />);
             case views.EXPORT:
                 return (<ExportDatabase />);
             default:
