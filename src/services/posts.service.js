@@ -1,10 +1,8 @@
 import utilService from './util.service';
 
-const postsService = {};
-
 const _key = 'justADay';
 
-postsService.get = function () {
+function getPosts() {
 
 	let posts = localStorage.getItem(_key);
 
@@ -13,10 +11,12 @@ postsService.get = function () {
 	}
 
 	return posts || [];
+
 }
 
-postsService.addPost = function(post) {
-	const currentPosts = postsService.get();
+function addPost(post) {
+
+	const currentPosts = getPosts();
 	
 	post.id = utilService.getNewId(currentPosts);
 	post.pDate = utilService.setDate();
@@ -25,10 +25,11 @@ postsService.addPost = function(post) {
 
 	const j = JSON.stringify(newPosts);
 	localStorage.setItem(_key, j);
+
 }
 
-postsService.import = function(dbAsJsonString) {
+function importDb(dbAsJsonString) {
 	localStorage.setItem(_key, dbAsJsonString);
 }
 
-export default postsService;
+export { getPosts, addPost, importDb };

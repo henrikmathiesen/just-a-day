@@ -1,10 +1,10 @@
-import postsService from '../services/posts.service.js';
+import { getPosts } from '../services/posts.service.js';
 
 function ExportDatabase() {
 
     let exported;
 
-    const posts = postsService.get();
+    const posts = getPosts();
 
     if (posts.length < 1) {
         exported = 'No data';

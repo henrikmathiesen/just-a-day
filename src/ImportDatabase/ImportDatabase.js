@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { views } from '../constants/constants';
-import postsService from '../services/posts.service';
+import { importDb } from '../services/posts.service';
 
 function ImportDatabase({ handleChangeViewClick }) {
 
@@ -9,7 +9,7 @@ function ImportDatabase({ handleChangeViewClick }) {
 
     const handleSubmit = () => { 
         // TODO: validation
-        postsService.import(data);
+        importDb(data);
         handleChangeViewClick(views.BLOG);
     };
 
