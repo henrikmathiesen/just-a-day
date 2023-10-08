@@ -1,6 +1,4 @@
-const utilService = {};
-
-utilService.getNewId = function (posts) {
+function getNewId(posts) {
 
     if (!posts.length) {
         return 1;
@@ -10,22 +8,23 @@ utilService.getNewId = function (posts) {
     const sorted = ids.sort((a, b) => { return a - b });
 
     return sorted.pop() + 1;
+
 }
 
-utilService.setDate = function () {
+function setDate() {
     return new Date();
 }
 
-utilService.displayDate = function (d) {
+function displayDate(d) {
     d = new Date(d);
     return d.toLocaleDateString('sv-se');
 }
 
-utilService.sortByProperty = function (arr, propName) {
+function sortByProperty(arr, propName) {
 
     const arrCopy = [...arr];
 
-    const compareFn = function(a, b) {
+    const compareFn = function (a, b) {
         const x = a[propName];
         const y = b[propName];
 
@@ -33,6 +32,7 @@ utilService.sortByProperty = function (arr, propName) {
     }
 
     return arrCopy.sort(compareFn);
+
 }
 
-export default utilService;
+export { getNewId, setDate, displayDate, sortByProperty };

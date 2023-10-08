@@ -1,4 +1,4 @@
-import utilService from './util.service';
+import { getNewId, setDate } from './util.service';
 
 const _key = 'justADay';
 
@@ -18,8 +18,8 @@ function addPost(post) {
 
 	const currentPosts = getPosts();
 	
-	post.id = utilService.getNewId(currentPosts);
-	post.pDate = utilService.setDate();
+	post.id = getNewId(currentPosts);
+	post.pDate = setDate();
 
 	const newPosts = [...currentPosts, post];
 

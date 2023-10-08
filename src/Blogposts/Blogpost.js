@@ -1,5 +1,5 @@
 import BlogpostCategories from '../BlogpostCategories/BlogpostCategories';
-import utilService from '../services/util.service';
+import { displayDate } from '../services/util.service';
 
 function Blogpost({ post }) {
 
@@ -26,7 +26,7 @@ function Blogpost({ post }) {
       <p>{paragraph}</p>
       <div className="row">
         <div className="col text-left">
-          <span className="app-badge badge badge-secondary">{utilService.displayDate(pDate)}</span>
+          <span className="app-badge badge badge-secondary">{displayDate(pDate)}</span>
           <span className={getClassNameForRating(rating)}>{rating}</span>
         </div>
         <div className="col text-right">

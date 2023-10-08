@@ -1,13 +1,13 @@
 import Blogpost from './Blogpost.js';
 import { getPosts } from '../services/posts.service.js';
-import utilService from '../services/util.service.js';
+import { sortByProperty } from '../services/util.service.js';
 
 import './Blogposts.css';
 
 function Blogposts() {
 
 	const posts = getPosts();
-	const postsSorted = utilService.sortByProperty(posts, 'id');
+	const postsSorted = sortByProperty(posts, 'id');
 
 	return (
 		<>

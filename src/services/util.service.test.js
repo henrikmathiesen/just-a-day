@@ -1,4 +1,4 @@
-import utilService from "./util.service";
+import { getNewId, sortByProperty } from './util.service';
 
 describe('util.service.tests', () => {
 
@@ -33,14 +33,14 @@ describe('util.service.tests', () => {
 
         it('should return 1 if no items', () => {
             const posts = [];
-            const id = utilService.getNewId(posts);
+            const id = getNewId(posts);
 
             expect(id).toBe(1);
         });
 
         it('should return an id that is higher than current highest id', () => {
             const posts = arr;
-            const id = utilService.getNewId(posts);
+            const id = getNewId(posts);
 
             expect(id).toBe(22);
         });
@@ -50,7 +50,7 @@ describe('util.service.tests', () => {
     describe('sortByProperty', () => {
 
         it('should sort integer, highest first -- test 1', () => {
-            const sorted = utilService.sortByProperty(arr, 'id');
+            const sorted = sortByProperty(arr, 'id');
 
             expect(sorted[0].id).toBe(21);
             expect(sorted[1].id).toBe(20);
