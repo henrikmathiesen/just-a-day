@@ -5,7 +5,7 @@ import { addPost } from '../services/posts.service';
 
 import './AddBlogPost.css';
 
-function AddBlogPosts({ handleChangeViewClick }) {
+function AddBlogPost({ handleChangeViewClick }) {
 
     const [header, setHeader] = useState('');
     const [post, setPost] = useState('');
@@ -104,4 +104,4 @@ function AddBlogPosts({ handleChangeViewClick }) {
 
 }
 
-export default AddBlogPosts;
+export default AddBlogPost;

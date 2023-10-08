@@ -1,5 +1,5 @@
 import Blogposts from '../Blogposts/Blogposts.js';
-import AddBlogPosts from '../AddBlogPost/AddBlogPost.js';
+import AddBlogPost from '../AddBlogPost/AddBlogPost.js';
 import ExportDatabase from '../ExportDatabase/ExportDatabase.js';
 import ImportDatabase from '../ImportDatabase/ImportDatabase.js';
 import { views } from '../constants/constants';
@@ -11,7 +11,7 @@ function Main({ view, handleChangeViewClick }) {
             case views.BLOG:
                 return (<Blogposts />); 
             case views.ADD:
-                return (<AddBlogPosts handleChangeViewClick={handleChangeViewClick} />);
+                return (<AddBlogPost handleChangeViewClick={handleChangeViewClick} />);
             case views.EDIT:
                 return 'Edit Mock';
             case views.DELETE:

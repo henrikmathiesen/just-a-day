@@ -6,12 +6,19 @@ import { views } from '../constants/constants';
 
 import './Nav.css';
 
-function Nav({ handleChangeViewClick }) {
+function Nav({ view, handleChangeViewClick }) {
 
   const blogButtonRef = useRef();
   useEffect(() => {
-    blogButtonRef.current.focus();
-  }, []);
+
+    // We only programmatically redirect to BLOG, so set focus then
+    // In the other cases, focus is set when user clicks on button
+
+    if (view === views.BLOG) {
+      blogButtonRef.current.focus();
+    }
+
+  }, [view]);
 
   const [showAdmin, setShowAdmin] = useState(false);
   const handleAdminClick = () => setShowAdmin(!showAdmin);

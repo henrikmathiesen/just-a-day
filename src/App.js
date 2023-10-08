@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="container d-flex flex-column">
       <Header />
-      <Nav handleChangeViewClick={handleChangeViewClick} />
+      <Nav view={view} handleChangeViewClick={handleChangeViewClick} />
       <Main view={view} handleChangeViewClick={handleChangeViewClick} />
       <Footer />
     </div>
