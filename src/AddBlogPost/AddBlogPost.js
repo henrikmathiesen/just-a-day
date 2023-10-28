@@ -8,8 +8,8 @@ import './AddBlogPost.css';
 function AddBlogPost({ handleChangeViewClick }) {
 
     const [header, setHeader] = useState('');
-    const [post, setPost] = useState('');
-    const [cats, setCats,] = useState([]);
+    const [body, setBody] = useState('');
+    const [categories, setCategories,] = useState([]);
     const [rating, setRating] = useState(3);
 
     const getCats = () => {
@@ -24,32 +24,31 @@ function AddBlogPost({ handleChangeViewClick }) {
 
     const handleCheckbox = (e, label) => {
         const ischecked = e.currentTarget.checked;
-        const exists = cats.includes(label);
+        const exists = categories.includes(label);
 
         let newCats = [];
 
         if (ischecked) {
             if (!exists) {
-                newCats = [...cats, label];
+                newCats = [...categories, label];
             } else {
-                newCats = [...cats];
+                newCats = [...categories];
             }
         }
 
         if (!ischecked) {
             if (!exists) {
-                newCats = [...cats];
+                newCats = [...categories];
             } else {
-                newCats = cats.filter(c => c !== label);
+                newCats = categories.filter(c => c !== label);
             }
         }
 
-        setCats(newCats);
+        setCategories(newCats);
     }
 
     const handleSubmit = () => { 
-        // TODO: validation
-        addPost({ categories: cats, header, paragraph: post, rating: parseInt(rating, 10) });
+        addPost({ categories, header, body, rating: parseInt(rating, 10) });
         handleChangeViewClick(views.BLOG);
     };
 
@@ -63,8 +62,8 @@ function AddBlogPost({ handleChangeViewClick }) {
                         <input type="text" id="header" className="form-control" onChange={(e) => setHeader(e.target.value)}></input>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="post">Post</label>
-                        <textarea id="post" className="form-control app-textarea" onChange={(e) => setPost(e.target.value)}></textarea>
+                        <label htmlFor="body">Body</label>
+                        <textarea id="body" className="form-control app-textarea" onChange={(e) => setBody(e.target.value)}></textarea>
                     </div>
                 </div>
             </div>

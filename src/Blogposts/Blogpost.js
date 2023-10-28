@@ -3,7 +3,7 @@ import { displayDate } from '../services/util.service';
 
 function Blogpost({ post }) {
 
-  const { categories, header, paragraph, pDate, rating } = post;
+  const { categories, header, body, pDate, rating } = post;
 
   const getClassNameForRating = (rating) => {
     switch (rating) {
@@ -23,7 +23,7 @@ function Blogpost({ post }) {
   return (
     <article className="app-blog-post">
       <h2 className="h3">{header}</h2>
-      <p>{paragraph}</p>
+      <p>{body}</p>
       <div className="row">
         <div className="col text-left">
           <span className="app-badge badge badge-secondary">{displayDate(pDate)}</span>
