@@ -35,4 +35,19 @@ function sortByProperty(arr, propName) {
 
 }
 
-export { getNewId, setDate, displayDate, sortByProperty };
+function postIsValid(post) {
+
+    const headerIsRequiredInvalid = !post.header;
+    const bodyIsRequiredInvalid = !post.body;
+    const categoriesIsRequiredInvalid = post.categories.length < 1;
+    const ratingIsRequiredInvalid = post.rating === 0;
+
+    if (headerIsRequiredInvalid || bodyIsRequiredInvalid || categoriesIsRequiredInvalid || ratingIsRequiredInvalid) {
+        return { headerIsRequiredInvalid, bodyIsRequiredInvalid, categoriesIsRequiredInvalid, ratingIsRequiredInvalid };
+    }
+
+    return true;
+
+}
+
+export { getNewId, setDate, displayDate, sortByProperty, postIsValid };

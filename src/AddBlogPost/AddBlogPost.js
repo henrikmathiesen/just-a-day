@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { blogpostCategories, views } from '../constants/constants';
 import { addPost } from '../services/posts.service';
+import { postIsValid } from '../services/util.service';
 
 import './AddBlogPost.css';
 
@@ -10,7 +11,9 @@ function AddBlogPost({ handleChangeViewClick }) {
     const [header, setHeader] = useState('');
     const [body, setBody] = useState('');
     const [categories, setCategories,] = useState([]);
-    const [rating, setRating] = useState(3);
+    const [rating, setRating] = useState(0);
+    const [triedSubmit, setTriedSubmit] = useState(false);
+    const [formIsValid, setFormIsValid] = useState(false);
 
     const getCats = () => {
         const cats = [];
@@ -47,14 +50,37 @@ function AddBlogPost({ handleChangeViewClick }) {
         setCategories(newCats);
     }
 
-    const handleSubmit = () => { 
-        addPost({ categories, header, body, rating: parseInt(rating, 10) });
-        handleChangeViewClick(views.BLOG);
+    const handleSubmit = () => {
+        setTriedSubmit(true);
+
+        const post = { categories, header, body, rating: parseInt(rating, 10) };
+        const isValid = postIsValid(post);
+
+        if (isValid === true) {
+            setFormIsValid(true);
+            addPost(post);
+            handleChangeViewClick(views.BLOG);
+        } else {
+            setFormIsValid(false);
+        }
     };
 
     return (
         <>
             <h2>Add Post</h2>
+
+            {
+                (!formIsValid && triedSubmit) &&
+                <div className="row mt-4">
+                    <div className="col-md-8">
+                        <div className="alert alert-danger">
+                            <h3 className="h4">Validation Error</h3>
+                            <p>All fields are required</p>
+                        </div>
+                    </div>
+                </div>
+            }
+
             <div className="row mt-4">
                 <div className="col-md-8">
                     <div className="form-group">
@@ -84,7 +110,8 @@ function AddBlogPost({ handleChangeViewClick }) {
                     }
                 </div>
                 <div className="col-md-1 mt-3 mt-md-1">
-                    <select className="form-control app-add-blog-post-rating" defaultValue="3" onChange={(e) => setRating(e.target.value)}>
+                    <select className="form-control app-add-blog-post-rating" defaultValue="0" onChange={(e) => setRating(e.target.value)}>
+                        <option value="0">R</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
