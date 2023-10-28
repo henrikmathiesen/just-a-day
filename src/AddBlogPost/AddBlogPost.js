@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { blogpostCategories, views } from '../constants/constants';
 import { addPost } from '../services/posts.service';
 import { postIsValid } from '../services/util.service';
+import ValidationErrors from './ValidationErrors';
 
 import './AddBlogPost.css';
 
@@ -69,17 +70,7 @@ function AddBlogPost({ handleChangeViewClick }) {
         <>
             <h2>Add Post</h2>
 
-            {
-                (!formIsValid && triedSubmit) &&
-                <div className="row mt-4">
-                    <div className="col-md-8">
-                        <div className="alert alert-danger">
-                            <h3 className="h4">Validation Error</h3>
-                            <p>All fields are required</p>
-                        </div>
-                    </div>
-                </div>
-            }
+            { (!formIsValid && triedSubmit) && <ValidationErrors /> }
 
             <div className="row mt-4">
                 <div className="col-md-8">
