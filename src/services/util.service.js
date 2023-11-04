@@ -43,7 +43,26 @@ function postIsValid(post) {
     const ratingIsRequiredInvalid = post.rating === 0;
 
     if (headerIsRequiredInvalid || bodyIsRequiredInvalid || categoriesIsRequiredInvalid || ratingIsRequiredInvalid) {
-        return { headerIsRequiredInvalid, bodyIsRequiredInvalid, categoriesIsRequiredInvalid, ratingIsRequiredInvalid };
+        const validationInformation = [];
+
+        if (headerIsRequiredInvalid) {
+            validationInformation.push('A header is needed');
+        }
+
+        if (bodyIsRequiredInvalid) {
+            validationInformation.push('Type a body for the post');
+        }
+
+        if (categoriesIsRequiredInvalid) {
+            validationInformation.push('Provide a category');
+        }
+
+        if (ratingIsRequiredInvalid) {
+            validationInformation.push('Give the day a rating');
+        }
+
+        return validationInformation;
+
     }
 
     return true;

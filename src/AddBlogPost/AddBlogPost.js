@@ -14,7 +14,7 @@ function AddBlogPost({ handleChangeViewClick }) {
     const [categories, setCategories,] = useState([]);
     const [rating, setRating] = useState(0);
     const [triedSubmit, setTriedSubmit] = useState(false);
-    const [formIsValid, setFormIsValid] = useState(false);
+    const [errors, setErrors ] = useState([]);
 
     const getCats = () => {
         const cats = [];
@@ -58,11 +58,11 @@ function AddBlogPost({ handleChangeViewClick }) {
         const isValid = postIsValid(post);
 
         if (isValid === true) {
-            setFormIsValid(true);
+            setErrors([]);
             addPost(post);
             handleChangeViewClick(views.BLOG);
         } else {
-            setFormIsValid(false);
+            setErrors(isValid);
         }
     };
 
@@ -70,7 +70,7 @@ function AddBlogPost({ handleChangeViewClick }) {
         <>
             <h2>Add Post</h2>
 
-            { (!formIsValid && triedSubmit) && <ValidationErrors /> }
+            { (!!errors.length && triedSubmit) && <ValidationErrors errors={errors} /> }
 
             <div className="row mt-4">
                 <div className="col-md-8">
