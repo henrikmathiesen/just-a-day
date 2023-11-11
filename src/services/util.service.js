@@ -69,4 +69,29 @@ function postIsValid(post) {
 
 }
 
-export { getNewId, setDate, displayDate, sortByProperty, postIsValid };
+function handleCheckbox(e, primitive, collection) {
+    const ischecked = e.currentTarget.checked;
+    const exists = collection.includes(primitive);
+
+    let newCollection = [];
+
+    if (ischecked) {
+        if (!exists) {
+            newCollection = [...collection, primitive];
+        } else {
+            newCollection = [...collection];
+        }
+    }
+
+    if (!ischecked) {
+        if (!exists) {
+            newCollection = [...collection];
+        } else {
+            newCollection = collection.filter(c => c !== primitive);
+        }
+    }
+
+    return newCollection;
+}
+
+export { getNewId, setDate, displayDate, sortByProperty, postIsValid, handleCheckbox };

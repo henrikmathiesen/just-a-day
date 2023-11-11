@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { blogpostCategories, views } from '../constants/constants';
 import { addPost } from '../services/posts.service';
-import { postIsValid } from '../services/util.service';
+import { postIsValid, handleCheckbox } from '../services/util.service';
 import ValidationErrors from './ValidationErrors';
 
 import './AddBlogPost.css';
@@ -26,28 +26,8 @@ function AddBlogPost({ handleChangeViewClick }) {
         return cats;
     };
 
-    const handleCheckbox = (e, label) => {
-        const ischecked = e.currentTarget.checked;
-        const exists = categories.includes(label);
-
-        let newCats = [];
-
-        if (ischecked) {
-            if (!exists) {
-                newCats = [...categories, label];
-            } else {
-                newCats = [...categories];
-            }
-        }
-
-        if (!ischecked) {
-            if (!exists) {
-                newCats = [...categories];
-            } else {
-                newCats = categories.filter(c => c !== label);
-            }
-        }
-
+    const handleCheckboxClick = (e, label) => {
+        const newCats = handleCheckbox(e, label, categories);
         setCategories(newCats);
     }
 
@@ -91,7 +71,7 @@ function AddBlogPost({ handleChangeViewClick }) {
 
                             <div className="form-check form-check-inline" key={c.id}>
                                 <input className="form-check-input" type="checkbox" value={c.label} id={c.id}
-                                    onChange={(e) => { handleCheckbox(e, c.label) }} />
+                                    onChange={(e) => { handleCheckboxClick(e, c.label) }} />
                                 <label className="form-check-label" htmlFor={c.id}>
                                     {c.label}
                                 </label>

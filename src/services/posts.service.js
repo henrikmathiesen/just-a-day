@@ -46,4 +46,4 @@ function importDb(dbAsJsonString) {
 	localStorage.setItem(_key, dbAsJsonString);
 }
 
-export { getPosts, addPost, importDb };
+export { getPosts, addPost, importDb, deletePosts };
