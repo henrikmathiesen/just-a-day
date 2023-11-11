@@ -2,6 +2,7 @@ import Blogposts from '../Blogposts/Blogposts.js';
 import AddBlogPost from '../AddBlogPost/AddBlogPost.js';
 import ExportDatabase from '../ExportDatabase/ExportDatabase.js';
 import ImportDatabase from '../ImportDatabase/ImportDatabase.js';
+import DeletePosts from '../DeletePosts/DeletePosts.js';
 import { views } from '../constants/constants';
 
 function Main({ view, handleChangeViewClick }) {
@@ -15,7 +16,7 @@ function Main({ view, handleChangeViewClick }) {
             case views.EDIT:
                 return 'Edit Mock';
             case views.DELETE:
-                return 'Delete Mock';
+                return (<DeletePosts />);
             case views.IMPORT:
                 return (<ImportDatabase handleChangeViewClick={handleChangeViewClick} />);
             case views.EXPORT:

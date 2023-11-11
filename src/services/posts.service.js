@@ -28,6 +28,20 @@ function addPost(post) {
 
 }
 
+function deletePosts(idsToDelete) {
+
+	const currentPosts = getPosts();
+	let remainingPosts = [];
+
+	remainingPosts = currentPosts.filter((p) => {
+		return !idsToDelete.includes(p.id);
+	});
+
+	const j = JSON.stringify(remainingPosts);
+	localStorage.setItem(_key, j);
+
+}
+
 function importDb(dbAsJsonString) {
 	localStorage.setItem(_key, dbAsJsonString);
 }

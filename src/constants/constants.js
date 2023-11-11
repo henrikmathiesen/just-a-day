@@ -10,7 +10,7 @@ const views = {
     BLOG: 'Blog',
     ADD: 'Add Post',
     EDIT: 'Edit Post',
-    DELETE: 'Delete Post',
+    DELETE: 'Delete Posts',
     IMPORT: 'Import Database',
     EXPORT: 'Export Database'
 };

@@ -16,7 +16,7 @@ function ExportDatabase() {
         <>
             <h2>Exported Database</h2>
             <div className="row mt-4">
-                <div className="col">
+                <div className="col pb-3">
                     <code>
                         {exported}
                     </code>
