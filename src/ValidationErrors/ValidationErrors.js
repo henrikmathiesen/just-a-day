@@ -1,10 +1,10 @@
-function ValidationErrors({ errors }) {
+function ValidationErrors({ errors, fullwidth }) {
 
     const nrOfErrors = errors.length;
 
     return (
         <div className="row mt-4">
-            <div className="col-md-8">
+            <div className={ fullwidth ? 'col-md-12' : 'col-md-8' }>
                 <div className="alert alert-danger">
                     <h3 className="h4">Validation Error{ nrOfErrors > 1 ? 's': '' }</h3>
                     <ul className="mb-0">

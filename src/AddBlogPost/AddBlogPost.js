@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { blogpostCategories, views } from '../constants/constants';
 import { addPost } from '../services/posts.service';
 import { postIsValid, handleCheckbox } from '../services/util.service';
-import ValidationErrors from './ValidationErrors';
+import ValidationErrors from '../ValidationErrors/ValidationErrors';
 
 import './AddBlogPost.css';
 
@@ -15,6 +15,13 @@ function AddBlogPost({ handleChangeViewClick }) {
     const [rating, setRating] = useState(0);
     const [triedSubmit, setTriedSubmit] = useState(false);
     const [errors, setErrors ] = useState([]);
+
+    /* 
+        TODO:
+            Maybe useState is not neccessary for variables
+            other than errors and triedSubmit since view
+            does not need to re render
+    */
 
     const getCats = () => {
         const cats = [];

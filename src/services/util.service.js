@@ -39,7 +39,7 @@ function postIsValid(post) {
 
     const headerIsRequiredInvalid = !post.header;
     const bodyIsRequiredInvalid = !post.body;
-    const categoriesIsRequiredInvalid = post.categories.length < 1;
+    const categoriesIsRequiredInvalid = !post.categories || post.categories.length < 1;
     const ratingIsRequiredInvalid = post.rating === 0;
 
     if (headerIsRequiredInvalid || bodyIsRequiredInvalid || categoriesIsRequiredInvalid || ratingIsRequiredInvalid) {
