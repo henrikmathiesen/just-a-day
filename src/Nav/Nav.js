@@ -9,13 +9,18 @@ import './Nav.css';
 function Nav({ view, handleChangeViewClick }) {
 
   const blogButtonRef = useRef();
+  const addButtonRef = useRef();
   useEffect(() => {
 
-    // We only programmatically redirect to BLOG, so set focus then
-    // In the other cases, focus is set when user clicks on button
+    //
+    // Set focus when redirect
 
     if (view === views.BLOG) {
       blogButtonRef.current.focus();
+    }
+
+    if (view === views.ADD) {
+      addButtonRef.current.focus();
     }
 
   }, [view]);
@@ -27,7 +32,7 @@ function Nav({ view, handleChangeViewClick }) {
     <nav className="row flex-shrink-0 bg-light py-4">
       <div className="col-lg-auto">
         <button type="button" className="btn btn-outline-success mr-2" ref={blogButtonRef} onClick={() => { handleChangeViewClick(views.BLOG) }}>{views.BLOG}</button>
-        <button type="button" className="btn btn-outline-primary mr-2" onClick={() => { handleChangeViewClick(views.ADD) }}>{views.ADD}</button>
+        <button type="button" className="btn btn-outline-primary mr-2" ref={addButtonRef} onClick={() => { handleChangeViewClick(views.ADD) }}>{views.ADD}</button>
         <button type="button" className="btn btn-outline-secondary" onClick={handleAdminClick}>Toggle Admin</button>
       </div>
       <div className="col-lg mt-3 mt-lg-0 text-lg-right app-admin-buttons-container">

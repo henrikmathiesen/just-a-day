@@ -1,20 +1,22 @@
 import { useState } from 'react';
 
 import { blogpostCategories, views } from '../constants/constants';
-import { addPost } from '../services/posts.service';
+import { addPost, getPostById, updatePost } from '../services/posts.service';
 import { postIsValid, handleCheckbox } from '../services/util.service';
 import ValidationErrors from '../ValidationErrors/ValidationErrors';
 
 import './AddBlogPost.css';
 
-function AddBlogPost({ handleChangeViewClick }) {
+function AddBlogPost({ handleChangeViewClick, idToEdit }) {
 
     const [header, setHeader] = useState('');
     const [body, setBody] = useState('');
     const [categories, setCategories,] = useState([]);
     const [rating, setRating] = useState(0);
     const [triedSubmit, setTriedSubmit] = useState(false);
-    const [errors, setErrors ] = useState([]);
+    const [errors, setErrors] = useState([]);
+
+    let postToEdit;
 
     /* 
         TODO:
@@ -22,6 +24,19 @@ function AddBlogPost({ handleChangeViewClick }) {
             other than errors and triedSubmit since view
             does not need to re render
     */
+
+    if (idToEdit !== 0) {
+        postToEdit = getPostById(idToEdit);
+        // TODO: https://medium.com/@vanthedev/how-to-pre-populate-inputs-when-editing-forms-in-react-2530d6069ab3
+        // need to keep id and pDate
+
+        // setHeader(postToEdit.header);
+        // setBody(postToEdit.body);
+        // setCategories(postToEdit.categories);
+        // setRating(postToEdit.rating);
+        // setPdate(postToEdit.pDate);
+        // setId(postToEdit.id);
+    }
 
     const getCats = () => {
         const cats = [];
@@ -57,7 +72,7 @@ function AddBlogPost({ handleChangeViewClick }) {
         <>
             <h2>Add Post</h2>
 
-            { (!!errors.length && triedSubmit) && <ValidationErrors errors={errors} /> }
+            {(!!errors.length && triedSubmit) && <ValidationErrors errors={errors} />}
 
             <div className="row mt-4">
                 <div className="col-md-8">

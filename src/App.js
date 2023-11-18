@@ -8,13 +8,13 @@ import Footer from './Footer/Footer.js';
 function App() {
 
   const [view, setView] = useState('Blog');
-  const handleChangeViewClick = (v) => setView(v);
+  const [idToEdit, setIdToEdit] = useState(0);
 
   return (
     <div className="container d-flex flex-column">
       <Header />
-      <Nav view={view} handleChangeViewClick={handleChangeViewClick} />
-      <Main view={view} handleChangeViewClick={handleChangeViewClick} />
+      <Nav view={view} handleChangeViewClick={setView} />
+      <Main view={view} handleChangeViewClick={setView} handleSetIdToEdit={setIdToEdit} idToEdit={idToEdit} />
       <Footer />
     </div>
   );

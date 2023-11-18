@@ -14,10 +14,15 @@ function getPosts() {
 
 }
 
+function getPostById(id) {
+	const posts = getPosts();
+	return posts.filter(p => p.id === id)[0];
+}
+
 function addPost(post) {
 
 	const currentPosts = getPosts();
-	
+
 	post.id = getNewId(currentPosts);
 	post.pDate = setDate();
 
@@ -26,6 +31,19 @@ function addPost(post) {
 	const j = JSON.stringify(newPosts);
 	localStorage.setItem(_key, j);
 
+}
+
+function updatePost(post) {
+
+	const currentPosts = getPosts();
+	const editPosts = [...currentPosts];
+
+	const indexOfPostToReplace = editPosts.findIndex(p => p.id === post.id);
+
+	editPosts.splice(indexOfPostToReplace, 1, post);
+
+	const j = JSON.stringify(editPosts);
+	localStorage.setItem(_key, j);
 }
 
 function deletePosts(idsToDelete) {
@@ -46,4 +64,4 @@ function importDb(dbAsJsonString) {
 	localStorage.setItem(_key, dbAsJsonString);
 }
 
-export { getPosts, addPost, importDb, deletePosts };
+export { getPosts, addPost, importDb, deletePosts, getPostById, updatePost };

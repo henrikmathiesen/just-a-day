@@ -1,7 +1,6 @@
 import { views } from '../constants/constants';
 import { getPosts, deletePosts } from '../services/posts.service.js';
-import { sortByProperty, handleCheckbox } from '../services/util.service.js';
-import { displayDate } from '../services/util.service';
+import { sortByProperty, handleCheckbox, displayDate } from '../services/util.service.js';
 
 import './DeletePosts.css';
 

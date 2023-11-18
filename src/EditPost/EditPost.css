@@ -1,0 +1,8 @@
+.app-blog-post-edit {
+    margin-bottom: 0.5rem;
+}
+
+.app-blog-post-edit:last-child {
+    margin-bottom: 0;
+	padding-bottom: 1rem;
+}
