@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="container d-flex flex-column">
       <Header />
-      <Nav view={view} handleChangeViewClick={setView} />
-      <Main view={view} handleChangeViewClick={setView} handleSetIdToEdit={setIdToEdit} idToEdit={idToEdit} />
+      <Nav view={view} setView={setView} />
+      <Main view={view} setView={setView} setIdToEdit={setIdToEdit} idToEdit={idToEdit} />
       <Footer />
     </div>
   );

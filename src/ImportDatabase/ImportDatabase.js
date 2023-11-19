@@ -4,7 +4,7 @@ import { importDb } from '../services/posts.service';
 import { postIsValid } from '../services/util.service';
 import ValidationErrors from '../ValidationErrors/ValidationErrors';
 
-function ImportDatabase({ handleChangeViewClick }) {
+function ImportDatabase({ setView }) {
 
     const [triedSubmit, setTriedSubmit] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -45,7 +45,7 @@ function ImportDatabase({ handleChangeViewClick }) {
         }
 
         importDb(jsonData);
-        handleChangeViewClick(views.BLOG);
+        setView(views.BLOG);
     };
 
     return (

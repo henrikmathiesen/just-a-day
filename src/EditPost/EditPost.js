@@ -4,7 +4,7 @@ import { sortByProperty, displayDate } from '../services/util.service.js';
 
 import './EditPost.css';
 
-function EditPost({ handleChangeViewClick, handleSetIdToEdit }) {
+function EditPost({ setView, setIdToEdit }) {
 
     const posts = getPosts();
     const postsSorted = sortByProperty(posts, 'id');
@@ -12,8 +12,8 @@ function EditPost({ handleChangeViewClick, handleSetIdToEdit }) {
     const getJsonObject = (p) => { return JSON.stringify(p); };
 
     const handleEditButtonClick = function (id) {
-        handleSetIdToEdit(id);
-        handleChangeViewClick(views.ADD)
+        setIdToEdit(id);
+        setView(views.ADD)
     }
 
     return (

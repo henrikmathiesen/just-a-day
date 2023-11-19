@@ -6,20 +6,20 @@ import DeletePosts from '../DeletePosts/DeletePosts.js';
 import EditPost from '../EditPost/EditPost.js';
 import { views } from '../constants/constants';
 
-function Main({ view, handleChangeViewClick, handleSetIdToEdit, idToEdit }) {
+function Main({ view, setView, setIdToEdit, idToEdit }) {
 
     const viewToShow = () => {
         switch (view) {
             case views.BLOG:
                 return (<Blogposts />); 
             case views.ADD:
-                return (<AddBlogPost handleChangeViewClick={handleChangeViewClick} idToEdit={idToEdit} />);
+                return (<AddBlogPost setView={setView} idToEdit={idToEdit} />);
             case views.EDIT:
-                return (<EditPost handleChangeViewClick={handleChangeViewClick} handleSetIdToEdit={handleSetIdToEdit} />);
+                return (<EditPost setView={setView} setIdToEdit={setIdToEdit} />);
             case views.DELETE:
-                return (<DeletePosts handleChangeViewClick={handleChangeViewClick} />);
+                return (<DeletePosts setView={setView} />);
             case views.IMPORT:
-                return (<ImportDatabase handleChangeViewClick={handleChangeViewClick} />);
+                return (<ImportDatabase setView={setView} />);
             case views.EXPORT:
                 return (<ExportDatabase />);
             default:

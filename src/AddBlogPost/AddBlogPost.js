@@ -7,7 +7,7 @@ import ValidationErrors from '../ValidationErrors/ValidationErrors';
 
 import './AddBlogPost.css';
 
-function AddBlogPost({ handleChangeViewClick, idToEdit }) {
+function AddBlogPost({ setView, idToEdit }) {
 
     const [header, setHeader] = useState('');
     const [body, setBody] = useState('');
@@ -62,7 +62,7 @@ function AddBlogPost({ handleChangeViewClick, idToEdit }) {
         if (isValid === true) {
             setErrors([]);
             addPost(post);
-            handleChangeViewClick(views.BLOG);
+            setView(views.BLOG);
         } else {
             setErrors(isValid);
         }

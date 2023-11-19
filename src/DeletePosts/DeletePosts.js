@@ -4,7 +4,7 @@ import { sortByProperty, handleCheckbox, displayDate } from '../services/util.se
 
 import './DeletePosts.css';
 
-function DeletePosts({ handleChangeViewClick }) {
+function DeletePosts({ setView }) {
 
     const posts = getPosts();
     const postsSorted = sortByProperty(posts, 'id');
@@ -16,7 +16,7 @@ function DeletePosts({ handleChangeViewClick }) {
     const handleSubmit = () => {
         if (idsToDelete.length < 1) { return; }
         deletePosts(idsToDelete);
-        handleChangeViewClick(views.BLOG);
+        setView(views.BLOG);
     }
 
     const handleCheckboxClick = (e, id) => {
