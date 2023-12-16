@@ -1,53 +1,54 @@
+import { useState } from 'react';
+
 import { views } from '../constants/constants';
 import { getPosts, deletePosts } from '../services/posts.service.js';
-import { sortByProperty, handleCheckbox, displayDate } from '../services/util.service.js';
-
-import './DeletePosts.css';
+import { sortByProperty, handleCheckbox } from '../services/util.service.js';
+import BlogpostCompactAdmin from '../Blogposts/Blogpost-compact-admin.js';
 
 function DeletePosts({ setView }) {
 
     const posts = getPosts();
     const postsSorted = sortByProperty(posts, 'id');
-    const postsToRender = postsSorted.map(p => ({ id: p.id, hd: p.header, dt: displayDate(p.pDate) }));
-    const getJsonObject = (p) => { return JSON.stringify(p); };
 
-    let idsToDelete = [];
+    const [checkedState, setCheckedState] = useState(new Array(postsSorted.length).fill(false));
+    const [idsToDelete, setIdsToDelete] = useState([]);
 
     const handleSubmit = () => {
-        if (idsToDelete.length < 1) { return; }
         deletePosts(idsToDelete);
         setView(views.BLOG);
     }
 
-    const handleCheckboxClick = (e, id) => {
-        idsToDelete = handleCheckbox(e, id, idsToDelete);
+    const handleAdminButtonClick = function (id, index) {
+        const updatedCheckedState = handleSetCheckedState(index);
+        setCheckedState(updatedCheckedState);
+        
+        const e = { currentTarget: { checked: updatedCheckedState[index] } };
+        const newIds = handleCheckbox(e, id, idsToDelete);
+        setIdsToDelete(newIds);
+    }
+
+    function handleSetCheckedState(i) {
+        const updatedCheckedState = checkedState.map((shouldCheck, index) => {
+            return index === i ? !shouldCheck : shouldCheck
+        });
+
+        return updatedCheckedState;
     }
 
     return (
         <>
             <h2>Delete Posts</h2>
+
             <div className="row mt-4">
                 <div className="col">
-                    <div className="row mb-2">
-                        <div className="col-auto">
-                            { postsToRender.length > 0 &&
-                                <button type="button" className="btn btn-danger ml-5" onClick={handleSubmit}>
-                                    Delete checked
-                                </button>
-                            }
-                        </div>
-                    </div>
-                    {postsToRender.map((post) => (
-                        <div className="row app-blog-post-delete" key={post.id}>
-                            <div className="col-auto">
-                                <input type="checkbox" onChange={(e) => { handleCheckboxClick(e, post.id) }} />
-                            </div>
-                            <div className="col">
-                                <code>
-                                    {getJsonObject(post)}
-                                </code>
-                            </div>
-                        </div>
+                    <button className="btn btn-danger" disabled={idsToDelete.length < 1} onClick={handleSubmit}>DELETE ALL MARKED</button>
+                </div>
+            </div>
+
+            <div className="row mt-4">
+                <div className="col">
+                    {postsSorted.map((post, index) => (
+                        <BlogpostCompactAdmin key={post.id} post={post} fromView={views.DELETE} index={index} checkedState={checkedState} handleAdminButtonClick={handleAdminButtonClick} />
                     ))}
                 </div>
             </div>
