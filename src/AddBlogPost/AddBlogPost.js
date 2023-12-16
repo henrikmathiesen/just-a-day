@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { blogpostCategories, views } from '../constants/constants';
 import { addPost, getPostById, updatePost } from '../services/posts.service';
@@ -13,32 +13,61 @@ function AddBlogPost({ setView, idToEdit }) {
     const [body, setBody] = useState('');
     const [categories, setCategories,] = useState([]);
     const [rating, setRating] = useState(0);
+    const [checkedState, setCheckedState] = useState(new Array(getCats().length).fill(false));
     const [triedSubmit, setTriedSubmit] = useState(false);
     const [errors, setErrors] = useState([]);
 
-    let postToEdit;
+    const headerInputRef = useRef(null);
+    const bodyInputRef = useRef(null);
+    const ratingInputRef = useRef(0);
 
-    /* 
-        TODO:
-            Maybe useState is not neccessary for variables
-            other than errors and triedSubmit since view
-            does not need to re render
-    */
+    let postToEdit = {};
+
+    useEffect(() => {
+
+        if (idToEdit !== 0) {
+
+            //
+            // EDITMODE: Update header and body
+
+            headerInputRef.current.value = postToEdit.header;
+            bodyInputRef.current.value = postToEdit.body;
+
+            setHeader(postToEdit.header);
+            setBody(postToEdit.body);
+
+            //
+            // EDITMODE: Update checkboxes
+
+            const newCheckboxState = new Array(getCats().length).fill(false);
+            const newCategories = [];
+            getCats().forEach((value, index) => {
+                postToEdit.categories.forEach((v, i) => {
+                    if (value.label === v) {
+                        newCheckboxState[index] = true;
+                        newCategories.push(v);
+                    }
+                })
+            });
+            setCheckedState(newCheckboxState);
+            setCategories(newCategories);
+
+            //
+            // EDITMODE: Update rating
+
+            ratingInputRef.current.value = postToEdit.rating;
+            setRating(postToEdit.rating);
+
+        }
+
+    }, [idToEdit, postToEdit.header, postToEdit.body, postToEdit.rating, postToEdit.categories]);
 
     if (idToEdit !== 0) {
         postToEdit = getPostById(idToEdit);
         // TODO: https://medium.com/@vanthedev/how-to-pre-populate-inputs-when-editing-forms-in-react-2530d6069ab3
-        // need to keep id and pDate
-
-        // setHeader(postToEdit.header);
-        // setBody(postToEdit.body);
-        // setCategories(postToEdit.categories);
-        // setRating(postToEdit.rating);
-        // setPdate(postToEdit.pDate);
-        // setId(postToEdit.id);
     }
 
-    const getCats = () => {
+    function getCats() {
         const cats = [];
 
         Object.keys(blogpostCategories).forEach((key) => {
@@ -46,11 +75,21 @@ function AddBlogPost({ setView, idToEdit }) {
         });
 
         return cats;
-    };
+    }
 
-    const handleCheckboxClick = (e, label) => {
+    function handleCheckboxClick(e, label, i) {
+        handleSetCheckedState(i);
+
         const newCats = handleCheckbox(e, label, categories);
         setCategories(newCats);
+    }
+
+    function handleSetCheckedState(i) {
+        const updatedCheckedState = checkedState.map((shouldCheck, index) => {
+            return index === i ? !shouldCheck : shouldCheck
+        });
+
+        setCheckedState(updatedCheckedState);
     }
 
     const handleSubmit = () => {
@@ -61,7 +100,13 @@ function AddBlogPost({ setView, idToEdit }) {
 
         if (isValid === true) {
             setErrors([]);
-            addPost(post);
+
+            if (idToEdit !== 0) {
+                updatePost({ id: postToEdit.id, pDate: postToEdit.pDate, ...post });
+            } else {
+                addPost(post);
+            }
+
             setView(views.BLOG);
         } else {
             setErrors(isValid);
@@ -78,22 +123,22 @@ function AddBlogPost({ setView, idToEdit }) {
                 <div className="col-md-8">
                     <div className="form-group">
                         <label htmlFor="header">Header</label>
-                        <input type="text" id="header" className="form-control" onChange={(e) => setHeader(e.target.value)}></input>
+                        <input type="text" id="header" className="form-control" onChange={(e) => setHeader(e.target.value)} ref={headerInputRef}></input>
                     </div>
                     <div className="form-group">
                         <label htmlFor="body">Body</label>
-                        <textarea id="body" className="form-control app-textarea" onChange={(e) => setBody(e.target.value)}></textarea>
+                        <textarea id="body" className="form-control app-textarea" onChange={(e) => setBody(e.target.value)} ref={bodyInputRef}></textarea>
                     </div>
                 </div>
             </div>
             <div className="row">
                 <div className="col-md-4">
                     {
-                        getCats().map((c) => (
+                        getCats().map((c, i) => (
 
                             <div className="form-check form-check-inline" key={c.id}>
                                 <input className="form-check-input" type="checkbox" value={c.label} id={c.id}
-                                    onChange={(e) => { handleCheckboxClick(e, c.label) }} />
+                                    onChange={(e) => { handleCheckboxClick(e, c.label, i) }} checked={checkedState[i]} />
                                 <label className="form-check-label" htmlFor={c.id}>
                                     {c.label}
                                 </label>
@@ -103,7 +148,7 @@ function AddBlogPost({ setView, idToEdit }) {
                     }
                 </div>
                 <div className="col-md-1 mt-3 mt-md-1">
-                    <select className="form-control app-add-blog-post-rating" defaultValue="0" onChange={(e) => setRating(e.target.value)}>
+                    <select className="form-control app-add-blog-post-rating" onChange={(e) => setRating(e.target.value)} ref={ratingInputRef}>
                         <option value="0">R</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -114,7 +159,9 @@ function AddBlogPost({ setView, idToEdit }) {
                 </div>
                 <div className="col-md-3 mt-3 mt-md-1">
                     <div className="form-group">
-                        <button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>Add it!</button>
+                        <button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
+                            { idToEdit !== 0 ? 'Update it' : 'Add it!' }
+                        </button>
                     </div>
                 </div>
             </div>

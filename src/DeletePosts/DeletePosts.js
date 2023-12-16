@@ -30,9 +30,11 @@ function DeletePosts({ setView }) {
                 <div className="col">
                     <div className="row mb-2">
                         <div className="col-auto">
-                            <button type="button" className="btn btn-danger ml-5" onClick={handleSubmit}>
-                                Delete checked
-                            </button>
+                            { postsToRender.length > 0 &&
+                                <button type="button" className="btn btn-danger ml-5" onClick={handleSubmit}>
+                                    Delete checked
+                                </button>
+                            }
                         </div>
                     </div>
                     {postsToRender.map((post) => (
