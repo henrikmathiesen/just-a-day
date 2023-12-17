@@ -11,3 +11,10 @@
 	}
 
 }
+
+/* Override bootstrap going block on small devices */
+.form-inline .form-control {
+	display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}

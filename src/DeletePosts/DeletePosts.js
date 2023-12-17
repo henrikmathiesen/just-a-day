@@ -41,7 +41,7 @@ function DeletePosts({ setView }) {
 
             <div className="row mt-4">
                 <div className="col">
-                    { postsSorted.length > 0 && (<button className="btn btn-danger" disabled={idsToDelete.length < 1} onClick={handleSubmit}>DELETE ALL MARKED</button>) }
+                    { postsSorted.length > 0 && <button className="btn btn-danger" disabled={idsToDelete.length < 1} onClick={handleSubmit}>DELETE ALL MARKED</button> }
                 </div>
             </div>
 

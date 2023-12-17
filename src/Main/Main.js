@@ -6,12 +6,12 @@ import DeletePosts from '../DeletePosts/DeletePosts.js';
 import EditPost from '../EditPost/EditPost.js';
 import { views } from '../constants/constants';
 
-function Main({ view, setView, setIdToEdit, idToEdit }) {
+function Main({ view, setView, setIdToEdit, idToEdit, filterByRating, filterByCategory }) {
 
     const viewToShow = () => {
         switch (view) {
             case views.BLOG:
-                return (<Blogposts />); 
+                return (<Blogposts filterByRating={filterByRating} filterByCategory={filterByCategory} />);
             case views.ADD:
                 return (<AddBlogPost setView={setView} idToEdit={idToEdit} setIdToEdit={setIdToEdit} />);
             case views.EDIT:
