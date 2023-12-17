@@ -7,7 +7,7 @@ import ValidationErrors from '../ValidationErrors/ValidationErrors';
 
 import './AddBlogPost.css';
 
-function AddBlogPost({ setView, idToEdit }) {
+function AddBlogPost({ setView, idToEdit, setIdToEdit }) {
 
     const [header, setHeader] = useState('');
     const [body, setBody] = useState('');
@@ -64,7 +64,6 @@ function AddBlogPost({ setView, idToEdit }) {
 
     if (idToEdit !== 0) {
         postToEdit = getPostById(idToEdit);
-        // TODO: https://medium.com/@vanthedev/how-to-pre-populate-inputs-when-editing-forms-in-react-2530d6069ab3
     }
 
     function getCats() {
@@ -107,6 +106,7 @@ function AddBlogPost({ setView, idToEdit }) {
                 addPost(post);
             }
 
+            setIdToEdit(0);
             setView(views.BLOG);
         } else {
             setErrors(isValid);

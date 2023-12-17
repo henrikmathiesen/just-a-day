@@ -13,7 +13,7 @@ function Main({ view, setView, setIdToEdit, idToEdit }) {
             case views.BLOG:
                 return (<Blogposts />); 
             case views.ADD:
-                return (<AddBlogPost setView={setView} idToEdit={idToEdit} />);
+                return (<AddBlogPost setView={setView} idToEdit={idToEdit} setIdToEdit={setIdToEdit} />);
             case views.EDIT:
                 return (<EditPost setView={setView} setIdToEdit={setIdToEdit} />);
             case views.DELETE:
