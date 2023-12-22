@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import Blogposts from '../Blogposts/Blogposts.js';
 import AddBlogPost from '../AddBlogPost/AddBlogPost.js';
 import ExportDatabase from '../ExportDatabase/ExportDatabase.js';
@@ -7,6 +9,14 @@ import EditPost from '../EditPost/EditPost.js';
 import { views } from '../constants/constants';
 
 function Main({ view, setView, setIdToEdit, idToEdit, filterByRating, filterByCategory }) {
+
+    useEffect(() => {
+
+        if (view !== views.ADD) {
+            setIdToEdit(0);
+        }
+
+    }, [view, setIdToEdit]);
 
     const viewToShow = () => {
         switch (view) {
@@ -26,6 +36,8 @@ function Main({ view, setView, setIdToEdit, idToEdit, filterByRating, filterByCa
                 return 'error';
         }
     };
+
+
 
     return (
         <main className="row flex-grow-1 bg-light">

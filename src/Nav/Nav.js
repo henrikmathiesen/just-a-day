@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { useRef } from 'react';
-import { useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { views, blogpostCategories } from '../constants/constants';
 
