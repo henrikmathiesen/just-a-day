@@ -81,13 +81,13 @@ function Nav({ view, setView, setFilterByRating, setFilterByCategory }) {
         {
           showFilter &&
           <div className="form-inline justify-content-lg-end">
-            <select defaultValue="0" className="form-control mr-2" onChange={(e) => setFilterByRating(e.target.value)}>
+            <select id="filter-rating" defaultValue="0" className="form-control mr-2" onChange={(e) => setFilterByRating(e.target.value)}>
               <option value="0">R</option>
               {
                 ['1', '2', '3', '4', '5'].map(n => (<option key={n} value={n}>{n}</option>))
               }
             </select>
-            <select defaultValue="0" className="form-control" onChange={(e) => setFilterByCategory(e.target.value)}>
+            <select id="filter-category" defaultValue="0" className="form-control" onChange={(e) => setFilterByCategory(e.target.value)}>
               <option value="0">Select</option>
               {
                 getCats().map(s => (<option key={s} value={s}>{s}</option>))
