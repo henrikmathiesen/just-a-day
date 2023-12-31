@@ -148,7 +148,7 @@ function AddBlogPost({ setView, idToEdit, setIdToEdit }) {
                     }
                 </div>
                 <div className="col-md-1 mt-3 mt-md-1">
-                    <select className="form-control app-add-blog-post-rating" onChange={(e) => setRating(e.target.value)} ref={ratingInputRef}>
+                    <select id="rating" className="form-control app-add-blog-post-rating" onChange={(e) => setRating(e.target.value)} ref={ratingInputRef}>
                         <option value="0">R</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
