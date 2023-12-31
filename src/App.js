@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="container d-flex flex-column">
       <Header />
-      <Nav view={view} setView={setView} setFilterByRating={setFilterByRating} setFilterByCategory={setFilterByCategory} />
+      <Nav view={view} setView={setView} setFilterByRating={setFilterByRating} setFilterByCategory={setFilterByCategory} filterByRating={filterByRating} filterByCategory={filterByCategory} />
       <Main view={view} setView={setView} setIdToEdit={setIdToEdit} idToEdit={idToEdit} filterByRating={filterByRating} filterByCategory={filterByCategory} />
       <Footer />
     </div>

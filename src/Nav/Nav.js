@@ -4,7 +4,7 @@ import { views, blogpostCategories } from '../constants/constants';
 
 import './Nav.css';
 
-function Nav({ view, setView, setFilterByRating, setFilterByCategory }) {
+function Nav({ view, setView, setFilterByRating, setFilterByCategory, filterByRating, filterByCategory }) {
 
   const blogButtonRef = useRef();
   const addButtonRef = useRef();
@@ -81,13 +81,13 @@ function Nav({ view, setView, setFilterByRating, setFilterByCategory }) {
         {
           showFilter &&
           <div className="form-inline justify-content-lg-end">
-            <select id="filter-rating" defaultValue="0" className="form-control mr-2" onChange={(e) => setFilterByRating(e.target.value)}>
+            <select id="filter-rating" defaultValue="0" className="form-control mr-2" onChange={(e) => setFilterByRating(e.target.value)} disabled={filterByCategory != 0}>
               <option value="0">R</option>
               {
                 ['1', '2', '3', '4', '5'].map(n => (<option key={n} value={n}>{n}</option>))
               }
             </select>
-            <select id="filter-category" defaultValue="0" className="form-control" onChange={(e) => setFilterByCategory(e.target.value)}>
+            <select id="filter-category" defaultValue="0" className="form-control" onChange={(e) => setFilterByCategory(e.target.value)} disabled={filterByRating != 0}>
               <option value="0">Select</option>
               {
                 getCats().map(s => (<option key={s} value={s}>{s}</option>))
