@@ -19,6 +19,16 @@ function getPostById(id) {
 	return posts.filter(p => p.id === id)[0];
 }
 
+function getNumberOfPosts() {
+	const posts = getPosts();
+	return posts.length;
+}
+
+function getNumberOfPostsWithRating(rating) {
+	const posts = getPosts();
+	return posts.filter(p => p.rating === rating).length;
+}
+
 function addPost(post) {
 
 	const currentPosts = getPosts();
@@ -64,4 +74,4 @@ function importDb(dbAsJsonString) {
 	localStorage.setItem(_key, dbAsJsonString);
 }
 
-export { getPosts, addPost, importDb, deletePosts, getPostById, updatePost };
+export { getPosts, addPost, importDb, deletePosts, getPostById, updatePost, getNumberOfPosts, getNumberOfPostsWithRating };

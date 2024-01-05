@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-import { views, blogpostCategories } from '../constants/constants';
+import { views, blogpostCategories, ratings } from '../constants/constants';
 
 import './Nav.css';
 
@@ -33,6 +33,16 @@ function Nav({ view, setView, setFilterByRating, setFilterByCategory, filterByRa
     }
 
   }, [view]);
+
+  useEffect(() => {
+
+    if (showFilter === false) {
+      // When showFilter is false and then true, the value is reset in GUI, need to keep state in sync
+      setFilterByRating(0);
+      setFilterByCategory(0);
+    }
+
+  }, [showFilter]);
 
   const handleAdminClick = () => {
     if (showFilter) {
@@ -74,6 +84,7 @@ function Nav({ view, setView, setFilterByRating, setFilterByCategory, filterByRa
           <>
             <button type="button" className="btn btn-outline-warning mr-2" onClick={() => { setView(views.EDIT) }}>{views.EDIT}</button>
             <button type="button" className="btn btn-outline-danger mr-2" onClick={() => { setView(views.DELETE) }}>{views.DELETE}</button>
+            <button type="button" className="btn btn-outline-info mr-2" onClick={() => { setView(views.STATS) }}>{views.STATS}</button>
             <button type="button" className="btn btn-outline-dark mr-2" onClick={() => { setView(views.IMPORT) }}>{views.IMPORT}</button>
             <button type="button" className="btn btn-outline-dark" onClick={() => { setView(views.EXPORT) }}>{views.EXPORT}</button>
           </>
@@ -84,7 +95,7 @@ function Nav({ view, setView, setFilterByRating, setFilterByCategory, filterByRa
             <select id="filter-rating" defaultValue="0" className="form-control mr-2" onChange={(e) => setFilterByRating(e.target.value)} disabled={filterByCategory != 0}>
               <option value="0">R</option>
               {
-                ['1', '2', '3', '4', '5'].map(n => (<option key={n} value={n}>{n}</option>))
+                ratings.map(n => (<option key={n} value={n}>{n}</option>))
               }
             </select>
             <select id="filter-category" defaultValue="0" className="form-control" onChange={(e) => setFilterByCategory(e.target.value)} disabled={filterByRating != 0}>

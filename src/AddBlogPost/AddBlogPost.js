@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 
-import { blogpostCategories, views } from '../constants/constants';
+import { blogpostCategories, views, ratings } from '../constants/constants';
 import { addPost, getPostById, updatePost } from '../services/posts.service';
 import { postIsValid, handleCheckbox } from '../services/util.service';
 import ValidationErrors from '../ValidationErrors/ValidationErrors';
@@ -150,17 +150,15 @@ function AddBlogPost({ setView, idToEdit, setIdToEdit }) {
                 <div className="col-md-1 mt-3 mt-md-1">
                     <select id="rating" className="form-control app-add-blog-post-rating" onChange={(e) => setRating(e.target.value)} ref={ratingInputRef}>
                         <option value="0">R</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        {
+                            ratings.map(n => (<option key={n} value={n}>{n}</option>))
+                        }
                     </select>
                 </div>
                 <div className="col-md-3 mt-3 mt-md-1">
                     <div className="form-group">
                         <button type="button" className="btn btn-success btn-block" onClick={handleSubmit}>
-                            { idToEdit !== 0 ? 'Update it' : 'Add it!' }
+                            {idToEdit !== 0 ? 'Update it' : 'Add it!'}
                         </button>
                     </div>
                 </div>

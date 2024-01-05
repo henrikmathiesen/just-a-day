@@ -6,6 +6,7 @@ import ExportDatabase from '../ExportDatabase/ExportDatabase.js';
 import ImportDatabase from '../ImportDatabase/ImportDatabase.js';
 import DeletePosts from '../DeletePosts/DeletePosts.js';
 import EditPost from '../EditPost/EditPost.js';
+import Stats from '../Stats/Stats.js';
 import { views } from '../constants/constants';
 
 function Main({ view, setView, setIdToEdit, idToEdit, filterByRating, filterByCategory }) {
@@ -28,6 +29,8 @@ function Main({ view, setView, setIdToEdit, idToEdit, filterByRating, filterByCa
                 return (<EditPost setView={setView} setIdToEdit={setIdToEdit} />);
             case views.DELETE:
                 return (<DeletePosts setView={setView} />);
+            case views.STATS:
+                return (<Stats />);
             case views.IMPORT:
                 return (<ImportDatabase setView={setView} />);
             case views.EXPORT:

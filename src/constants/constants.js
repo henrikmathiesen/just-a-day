@@ -9,10 +9,13 @@ const blogpostCategories = {
 const views = {
     BLOG: 'Blog',
     ADD: 'Add Post',
-    EDIT: 'Edit Post',
-    DELETE: 'Delete Posts',
-    IMPORT: 'Import Database',
-    EXPORT: 'Export Database'
+    EDIT: 'Edit',
+    DELETE: 'Delete',
+    IMPORT: 'Import',
+    EXPORT: 'Export',
+    STATS: 'Stats'
 };
 
-export { blogpostCategories, views };
+const ratings = ['1', '2', '3', '4', '5'];
+
+export { blogpostCategories, views, ratings };

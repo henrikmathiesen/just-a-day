@@ -1,24 +1,10 @@
-import BlogpostCategories from '../BlogpostCategories/BlogpostCategories';
+import BlogpostCategories from './BlogpostCategories';
+import Rating from './Rating';
 import { displayDate } from '../services/util.service';
 
 function Blogpost({ post }) {
 
   const { categories, header, body, pDate, rating } = post;
-
-  const getClassNameForRating = (rating) => {
-    switch (rating) {
-        case 1:
-        case 2:
-            return 'app-badge badge badge-danger';
-        case 3:
-        case 4:
-          return 'app-badge badge badge-warning';
-        case 5:
-            return 'app-badge badge badge-success';
-        default:
-            return 'error';
-    }
-}
 
   return (
     <article className="app-blog-post">
@@ -27,7 +13,7 @@ function Blogpost({ post }) {
       <div className="row">
         <div className="col text-left">
           <span className="app-badge badge badge-secondary">{displayDate(pDate)}</span>
-          <span className={getClassNameForRating(rating)}>{rating}</span>
+          <Rating rating={rating} />
         </div>
         <div className="col text-right">
           <BlogpostCategories categories={categories} />

@@ -20,6 +20,12 @@ function displayDate(d) {
     return d.toLocaleDateString('sv-se');
 }
 
+function displayPercent(nr) {
+    const p = nr * 100;
+    const r = Math.round(p)
+    return `${r}%`;
+}
+
 function sortByProperty(arr, propName) {
 
     const arrCopy = [...arr];
@@ -94,4 +100,4 @@ function handleCheckbox(e, primitive, collection) {
     return newCollection;
 }
 
-export { getNewId, setDate, displayDate, sortByProperty, postIsValid, handleCheckbox };
+export { getNewId, setDate, displayDate, sortByProperty, postIsValid, handleCheckbox, displayPercent };
