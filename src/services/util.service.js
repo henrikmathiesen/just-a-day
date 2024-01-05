@@ -21,6 +21,11 @@ function displayDate(d) {
 }
 
 function displayPercent(nr) {
+
+    if (Number.isNaN(nr)) {
+        return '0%';
+    }
+
     const p = nr * 100;
     const r = Math.round(p)
     return `${r}%`;
