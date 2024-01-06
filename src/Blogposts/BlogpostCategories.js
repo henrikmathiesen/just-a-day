@@ -3,17 +3,24 @@ import { blogpostCategories } from '../constants/constants';
 function BlogpostCategories({ categories }) {
 
     const getClassNameForCategory = (category) => {
+
+        let cssClass = 'app-badge app-badge-responsive badge ';
+
         switch (category) {
             case blogpostCategories.HUMAN_RELATIONS:
             case blogpostCategories.WORK:
             case blogpostCategories.OTHER:
-                return 'app-badge badge badge-info';
+                cssClass += 'badge-info';
+                break;
             case blogpostCategories.MENTAL_FITNESS:
             case blogpostCategories.PHYSICAL_FITNESS:
-                return 'app-badge badge badge-dark';
+                cssClass += 'badge-dark';
+                break;
             default:
-                return 'error';
+                cssClass = 'error';
         }
+
+        return cssClass;
     }
 
     return (

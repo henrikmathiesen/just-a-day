@@ -1,4 +1,4 @@
-import Rating from '../Blogposts/Rating.js';
+import BlogpostRating from '../Blogposts/BlogpostRating.js';
 import { ratings } from '../constants/constants.js';
 import { getNumberOfPosts, getNumberOfPostsWithRating } from '../services/posts.service.js';
 import { displayPercent } from '../services/util.service.js';
@@ -15,7 +15,7 @@ function Stats() {
             <div className="row mt-4">
                 <div className="col">
                     <div className="alert alert-info">
-                        <h3 className="h5 m-0">Total number of posts: {getNumberOfPosts()}</h3>
+                        <h3 className="h5 m-0 text-center">Total number of posts: {getNumberOfPosts()}</h3>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@ function Stats() {
                         <ol className="list-unstyled m-0">
                             {
                                 ratings.map(n => (
-                                    <li key={n}><Rating rating={+n} /> : {getNumberOfPostsWithRating(+n)} </li>
+                                    <li key={n}><BlogpostRating rating={+n} makeResponsive={false} /> : {getNumberOfPostsWithRating(+n)} </li>
                                 ))
                             }
                         </ol>
@@ -38,7 +38,7 @@ function Stats() {
                         <ol className="list-unstyled m-0">
                             {
                                 ratings.map(n => (
-                                    <li key={n}><Rating rating={+n} /> : {getPercent(getNumberOfPosts(), getNumberOfPostsWithRating(+n))} </li>
+                                    <li key={n}><BlogpostRating rating={+n} makeResponsive={false} /> : {getPercent(getNumberOfPosts(), getNumberOfPostsWithRating(+n))} </li>
                                 ))
                             }
                         </ol>

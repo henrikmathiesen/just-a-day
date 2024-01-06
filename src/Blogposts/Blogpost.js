@@ -1,6 +1,6 @@
+import BlogpostDate from './BlogpostDate';
+import BlogpostRating from './BlogpostRating';
 import BlogpostCategories from './BlogpostCategories';
-import Rating from './Rating';
-import { displayDate } from '../services/util.service';
 
 function Blogpost({ post }) {
 
@@ -12,8 +12,8 @@ function Blogpost({ post }) {
       <p>{body}</p>
       <div className="row">
         <div className="col text-left">
-          <span className="app-badge badge badge-secondary">{displayDate(pDate)}</span>
-          <Rating rating={rating} />
+          <BlogpostDate pDate={pDate} />
+          <BlogpostRating rating={rating} />
         </div>
         <div className="col text-right">
           <BlogpostCategories categories={categories} />

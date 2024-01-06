@@ -19,13 +19,13 @@
 }
 
 @media only screen and (max-width:575px) { 
-	.app-badge {
+	.app-badge-responsive {
 		margin-right: 0 !important;
 		margin-bottom: 0.25rem;
 		display: block;
 	}
 
-	.app-badge:last-child {
+	.app-badge-responsive:last-child {
 		margin-bottom: 0;
 	}
 }
