@@ -1,10 +1,11 @@
-import { getNewId, sortByProperty } from './util.service';
+import { ratings } from '../constants/constants.js';
+import { getNewId, sortByProperty, getAvarageRating } from './util.service';
 
 describe('util.service.tests', () => {
 
     let arr;
 
-    beforeEach(() => { 
+    beforeEach(() => {
         arr = [
             {
                 id: 10,
@@ -57,6 +58,58 @@ describe('util.service.tests', () => {
             expect(sorted[2].id).toBe(15);
             expect(sorted[3].id).toBe(10);
             expect(sorted[4].id).toBe(5);
+        });
+
+    });
+
+    describe('getAvarageRating', () => {
+
+        it('should calculate -- test 1', () => {
+            const getNumberOfPostsWithRatingMock = (rating) => {
+                const posts = [{ id: 1, rating: 1 }, { id: 2, rating: 1 }];
+                return posts.filter(p => p.rating === rating).length;
+            };
+
+            const expected = 1;
+            const actual = getAvarageRating(ratings, getNumberOfPostsWithRatingMock, 2);
+
+            expect(expected).toBe(actual);
+        });
+
+        it('should calculate -- test 2', () => {
+            const getNumberOfPostsWithRatingMock = (rating) => {
+                const posts = [];
+                return posts.filter(p => p.rating === rating).length;
+            };
+
+            const expected = 0;
+            const actual = getAvarageRating(ratings, getNumberOfPostsWithRatingMock, 0);
+
+            expect(expected).toBe(actual);
+        });
+
+        it('should calculate -- test 3', () => {
+            const getNumberOfPostsWithRatingMock = (rating) => {
+                const posts = [{ id: 1, rating: 5 }, { id: 2, rating: 5 }, { id: 3, rating: 5 }, { id: 4, rating: 5 }, { id: 5, rating: 5 }];
+                return posts.filter(p => p.rating === rating).length;
+            };
+
+            const expected = 5;
+            const actual = getAvarageRating(ratings, getNumberOfPostsWithRatingMock, 5);
+
+            expect(expected).toBe(actual);
+        });
+
+        it('should calculate -- test 4', () => {
+            const getNumberOfPostsWithRatingMock = (rating) => {
+                const posts = [{id: 1, rating: 5}, {id: 2, rating: 1}];
+                return posts.filter(p => p.rating === rating).length;
+            };
+
+            const expected = 3;
+            const actual = getAvarageRating(ratings, getNumberOfPostsWithRatingMock, 2);
+
+            expect(expected).toBe(actual);
         });
 
     });

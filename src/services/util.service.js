@@ -31,6 +31,32 @@ function displayPercent(nr) {
     return `${r}%`;
 }
 
+function getAvarageRating(ratingsConstant, getNumberOfPostsWithRatingFn, totalNumberOfPosts) {
+
+    const ratingsData = [];
+
+    ratingsConstant.forEach((n) => {
+        ratingsData.push({ theRating: +n, theNumberOfPosts: getNumberOfPostsWithRatingFn(+n) });
+    });
+
+    let taljare = 0;
+
+    ratingsData.forEach((rd) => {
+        taljare += rd.theRating * rd.theNumberOfPosts;
+    });
+
+    let avg = taljare / totalNumberOfPosts;
+
+    if(Number.isNaN(avg)) {
+       avg = 0; 
+    }
+
+    const r = Math.round(avg * 10) / 10;
+
+    return r;
+
+}
+
 function sortByProperty(arr, propName) {
 
     const arrCopy = [...arr];
@@ -105,4 +131,4 @@ function handleCheckbox(e, primitive, collection) {
     return newCollection;
 }
 
-export { getNewId, setDate, displayDate, sortByProperty, postIsValid, handleCheckbox, displayPercent };
+export { getNewId, setDate, displayDate, sortByProperty, postIsValid, handleCheckbox, displayPercent, getAvarageRating };
