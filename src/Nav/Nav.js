@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
 import { views, blogpostCategories, ratings } from '../constants/constants';
+import { getCategoriesAsArray } from '../services/util.service';
 
 import './Nav.css';
 
@@ -60,16 +61,6 @@ function Nav({ view, setView, setFilterByRating, setFilterByCategory, filterByRa
     setShowFilter(!showFilter);
   }
 
-  function getCats() {
-    const cats = [];
-
-    Object.keys(blogpostCategories).forEach((key) => {
-      cats.push(blogpostCategories[key]);
-    });
-
-    return cats;
-  }
-
   return (
     <nav className="row flex-shrink-0 bg-light py-4">
       <div className="col-lg-auto">
@@ -101,7 +92,7 @@ function Nav({ view, setView, setFilterByRating, setFilterByCategory, filterByRa
             <select id="filter-category" defaultValue="0" className="form-control" onChange={(e) => setFilterByCategory(e.target.value)} disabled={filterByRating != 0}>
               <option value="0">Select</option>
               {
-                getCats().map(s => (<option key={s} value={s}>{s}</option>))
+                getCategoriesAsArray(blogpostCategories).map(s => (<option key={s} value={s}>{s}</option>))
               }
             </select>
           </div>

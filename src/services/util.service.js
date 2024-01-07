@@ -72,6 +72,16 @@ function sortByProperty(arr, propName) {
 
 }
 
+function getCategoriesAsArray(categoriesConstant) {
+    const cats = [];
+
+    Object.keys(categoriesConstant).forEach((key) => {
+      cats.push(categoriesConstant[key]);
+    });
+
+    return cats;
+}
+
 function postIsValid(post) {
 
     const headerIsRequiredInvalid = !post.header;
@@ -131,4 +141,14 @@ function handleCheckbox(e, primitive, collection) {
     return newCollection;
 }
 
-export { getNewId, setDate, displayDate, sortByProperty, postIsValid, handleCheckbox, displayPercent, getAvarageRating };
+export { 
+    getNewId, 
+    setDate, 
+    displayDate, 
+    sortByProperty, 
+    postIsValid, 
+    handleCheckbox, 
+    displayPercent, 
+    getAvarageRating,
+    getCategoriesAsArray
+};

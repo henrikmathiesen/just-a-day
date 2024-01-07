@@ -2,6 +2,9 @@ import { getNewId, setDate } from './util.service';
 
 const _key = 'justADay';
 
+//
+// CRUD
+
 function getPosts() {
 
 	let posts = localStorage.getItem(_key);
@@ -12,21 +15,6 @@ function getPosts() {
 
 	return posts || [];
 
-}
-
-function getPostById(id) {
-	const posts = getPosts();
-	return posts.filter(p => p.id === id)[0];
-}
-
-function getNumberOfPosts() {
-	const posts = getPosts();
-	return posts.length;
-}
-
-function getNumberOfPostsWithRating(rating) {
-	const posts = getPosts();
-	return posts.filter(p => p.rating === rating).length;
 }
 
 function addPost(post) {
@@ -74,4 +62,38 @@ function importDb(dbAsJsonString) {
 	localStorage.setItem(_key, dbAsJsonString);
 }
 
-export { getPosts, addPost, importDb, deletePosts, getPostById, updatePost, getNumberOfPosts, getNumberOfPostsWithRating };
+//
+// Util
+
+function getPostById(id) {
+	const posts = getPosts();
+	return posts.filter(p => p.id === id)[0];
+}
+
+function getNumberOfPosts() {
+	const posts = getPosts();
+	return posts.length;
+}
+
+function getNumberOfPostsWithRating(rating) {
+	const posts = getPosts();
+	return posts.filter(p => p.rating === rating).length;
+}
+
+function getNumberOfPostsWithCategory(category) {
+	const posts = getPosts();
+	return posts.filter(p => p.categories.includes(category)).length;
+}
+
+
+export { 
+	getPosts, 
+	addPost, 
+	importDb, 
+	deletePosts, 
+	getPostById, 
+	updatePost, 
+	getNumberOfPosts, 
+	getNumberOfPostsWithRating,
+	getNumberOfPostsWithCategory
+};
