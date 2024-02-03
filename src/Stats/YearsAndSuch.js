@@ -8,9 +8,9 @@ function YearsAndSuch() {
 
     return (
         <>
-            <div className="row">
+            <div className="row app-margin-bottom-bs-column-padding">
                 <div className="col">
-                    <div className="alert alert-light">
+                    <div className="alert alert-light m-0">
                         <h3 className="h5">Number of posts in a year</h3>
                         <ol className="list-unstyled m-0">
                             {
@@ -22,7 +22,7 @@ function YearsAndSuch() {
                     </div>
                 </div>
                 <div className="col">
-                    <div className="alert alert-light">
+                    <div className="alert alert-light m-0">
                         <h3 className="h5">Todo</h3>
                     </div>
                 </div>

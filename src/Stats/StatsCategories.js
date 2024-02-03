@@ -11,9 +11,9 @@ function StatsCategories() {
 
     return (
         <>
-            <div className="row">
+            <div className="row app-margin-bottom-bs-column-padding">
                 <div className="col-md-6">
-                    <div className="alert alert-light">
+                    <div className="alert alert-light m-0">
                         <h3 className="h5">Number of posts with category</h3>
                         <ol className="list-unstyled m-0">
                             {
@@ -30,7 +30,7 @@ function StatsCategories() {
                     </div>
                 </div>
                 <div className="col-md-6">
-                    <div className="alert alert-light">
+                    <div className="alert alert-light m-0">
                         <h3 className="h5">Percent of posts with category</h3>
                         <ol className="list-unstyled m-0">
                         {

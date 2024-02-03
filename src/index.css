@@ -5,3 +5,10 @@ html, body, #root, .container {
 .app-textarea {
   min-height: 10rem;
 }
+
+
+/* Utils */
+
+.app-margin-bottom-bs-column-padding {
+  margin-bottom: 1.875rem;
+}
