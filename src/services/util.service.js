@@ -47,8 +47,8 @@ function getAvarageRating(ratingsConstant, getNumberOfPostsWithRatingFn, totalNu
 
     let avg = taljare / totalNumberOfPosts;
 
-    if(Number.isNaN(avg)) {
-       avg = 0; 
+    if (Number.isNaN(avg)) {
+        avg = 0;
     }
 
     const r = Math.round(avg * 10) / 10;
@@ -72,11 +72,19 @@ function sortByProperty(arr, propName) {
 
 }
 
+function removeDuplicates(arr) {
+    return [...new Set(arr)];
+}
+
+function getYearFromPdate(pDate) {
+    return pDate.split('-')[0];
+}
+
 function getCategoriesAsArray(categoriesConstant) {
     const cats = [];
 
     Object.keys(categoriesConstant).forEach((key) => {
-      cats.push(categoriesConstant[key]);
+        cats.push(categoriesConstant[key]);
     });
 
     return cats;
@@ -141,14 +149,16 @@ function handleCheckbox(e, primitive, collection) {
     return newCollection;
 }
 
-export { 
-    getNewId, 
-    setDate, 
-    displayDate, 
-    sortByProperty, 
-    postIsValid, 
-    handleCheckbox, 
-    displayPercent, 
+export {
+    getNewId,
+    setDate,
+    displayDate,
+    sortByProperty,
+    postIsValid,
+    handleCheckbox,
+    displayPercent,
     getAvarageRating,
-    getCategoriesAsArray
+    getCategoriesAsArray,
+    removeDuplicates,
+    getYearFromPdate
 };

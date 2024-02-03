@@ -1,4 +1,4 @@
-import { getNewId, setDate } from './util.service';
+import { getNewId, setDate, getYearFromPdate } from './util.service';
 
 const _key = 'justADay';
 
@@ -85,6 +85,12 @@ function getNumberOfPostsWithCategory(category) {
 	return posts.filter(p => p.categories.includes(category)).length;
 }
 
+function getNumberOfPostsWithYear(year) {
+	const posts = getPosts();
+	const years = posts.map(v => getYearFromPdate(v.pDate));
+	return years.filter(v => v === year).length;
+}
+
 
 export { 
 	getPosts, 
@@ -95,5 +101,6 @@ export {
 	updatePost, 
 	getNumberOfPosts, 
 	getNumberOfPostsWithRating,
-	getNumberOfPostsWithCategory
+	getNumberOfPostsWithCategory,
+	getNumberOfPostsWithYear
 };

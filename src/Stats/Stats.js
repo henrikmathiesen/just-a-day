@@ -1,5 +1,6 @@
 import StatsRating from './StatsRating.js';
 import StatsCategories from './StatsCategories.js';
+import YearsAndSuch from './YearsAndSuch.js';
 import { getNumberOfPosts } from '../services/posts.service.js';
 
 function Stats() {
@@ -16,6 +17,7 @@ function Stats() {
             </div>
             <StatsRating />
             <StatsCategories />
+            <YearsAndSuch />
         </>
     );
 
