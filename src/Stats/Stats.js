@@ -8,9 +8,9 @@ function Stats() {
     return (
         <>
             <h2>Stats</h2>
-            <div className="row mt-4 app-margin-bottom-bs-column-padding">
+            <div className="row mt-4">
                 <div className="col">
-                    <div className="alert alert-light m-0">
+                    <div className="alert alert-light">
                         <h3 className="h5 m-0 text-center">Total number of posts: {getNumberOfPosts()}</h3>
                     </div>
                 </div>

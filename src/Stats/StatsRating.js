@@ -32,9 +32,9 @@ function StatsRating() {
 
     return (
         <>
-            <div className="row app-margin-bottom-bs-column-padding">
+            <div className="row">
                 <div className="col">
-                    <div className="alert alert-light m-0">
+                    <div className="alert alert-light">
                         <h3 className="h5">Number of posts with rating</h3>
                         <ol className="list-unstyled m-0">
                             {
@@ -46,7 +46,7 @@ function StatsRating() {
                     </div>
                 </div>
                 <div className="col">
-                    <div className="alert alert-light m-0">
+                    <div className="alert alert-light">
                         <h3 className="h5">Percent of posts with rating</h3>
                         <ol className="list-unstyled m-0">
                             {
@@ -58,9 +58,9 @@ function StatsRating() {
                     </div>
                 </div>
             </div>
-            <div className="row app-margin-bottom-bs-column-padding">
+            <div className="row">
                 <div className="col">
-                    <div className="alert alert-light m-0">
+                    <div className="alert alert-light">
                         <h3 className="h5 m-0 text-center">Posts Avarage Rating: <span className={getCssClassForAvarageRating()}>{avarageRating}</span></h3>
                     </div>
                 </div>

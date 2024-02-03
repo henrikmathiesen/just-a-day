@@ -90,6 +90,10 @@ function getCategoriesAsArray(categoriesConstant) {
     return cats;
 }
 
+function randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
 function postIsValid(post) {
 
     const headerIsRequiredInvalid = !post.header;
@@ -160,5 +164,6 @@ export {
     getAvarageRating,
     getCategoriesAsArray,
     removeDuplicates,
-    getYearFromPdate
+    getYearFromPdate,
+    randomIntFromInterval
 };
