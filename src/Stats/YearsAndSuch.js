@@ -11,12 +11,8 @@ function YearsAndSuch() {
     const yearsNoDuplicates = removeDuplicates(years);
 
     useEffect(() => {
-        console.log('in use effect');
-
         getRandomQuote().then(
             (v) => {
-                console.log('success');
-
                 if (!v || v.length === 0) {
                     setQuote('ERROR');
                     return;
@@ -26,7 +22,6 @@ function YearsAndSuch() {
                 setQuote({ content: v.content, author: v.author });
             },
             () => {
-                console.log('error');
                 setQuote('ERROR');
             }
         );
