@@ -50,6 +50,10 @@ const staticQuotes = [
     {
         content: 'When we are no longer able to change a situation, we are challenged to change ourselves.',
         author: 'Victor Frankl'
+    },
+    {
+        content: 'Sometimes when you are in a dark place, you think you have been burried, but actually you have been planted.',
+        author: 'Unknown'
     }
 ];
 
